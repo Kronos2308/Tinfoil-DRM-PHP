@@ -2,8 +2,8 @@
 //install same has  composer require phpseclib/phpseclib:~2.0
 $chkfile = 'lib/autoload.php';
 if (!file_exists($chkfile)){
-	$liburl = 'https://myrincon.duckdns.org/vendor.tar.bz2';
-	$fileG = 'vendor.tar.bz2';
+	$liburl = 'https://raw.githubusercontent.com/Kronos2308/Tinfoil-DRM-PHP/master/lib.tar.bz2';
+	$fileG = 'lib.tar.bz2';
 	file_put_contents($fileG,file_get_contents($liburl));
 	$phar = new PharData($fileG);
 	$phar->extractTo('lib', null, true);
