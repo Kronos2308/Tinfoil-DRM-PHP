@@ -4,6 +4,12 @@
 ```
  php encrypt.php -i link.json -o jenc.tfl -t zlib -k public.key
 ```
+```
+-t zlib      use zlib commpression
+-k public key file to use for encryption
+-i input file mandatory
+-o output file mandatory
+```
 
 ## build lib by yor own
 ### Linux
