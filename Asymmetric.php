@@ -82,9 +82,15 @@ class Tinfoil {
 		}
 		
 		$sessionKey = self::wrapKey($aesKey,$pubKey);
-		$buf = openssl_encrypt($buf, 'aes-128-ecb', $aesKey,OPENSSL_RAW_DATA);//$buf = substr($buf,0,-16);//clear some end stuff
+		$buf = openssl_encrypt($buf, 'aes-128-ecb', $aesKey,OPENSSL_RAW_DATA);$buf = substr($buf,0,-16);//clear some end stuff
 
-		$rawdata = "TINFOIL\xFE".$sessionKey.pack('P', $sz).$buf;
+		$buffer = '';
+		$buffer .= "TINFOIL";
+		$buffer .= "\xFE";
+		$buffer .= $sessionKey;
+		$buffer .= pack('P', $sz);
+		$buffer .= $buf;
+		$rawdata = $buffer;
 		return true;
 	}
 }
