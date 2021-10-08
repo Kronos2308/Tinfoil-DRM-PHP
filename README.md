@@ -65,3 +65,5 @@ php mv vendor lib
 
 ## ToDo
 
+![scheme](https://cdn.discordapp.com/attachments/667270956665798669/895545090569801758/unknown.png)
+
