@@ -1,8 +1,4 @@
 <?php
-//install same has  composer require phpseclib/phpseclib:~2.0
-
-
-
 //Tinfoil::init();
 
 class Tinfoil {
@@ -50,7 +46,7 @@ class Tinfoil {
 		return false;
 	}
 
-	public static function Pack ($message){
+	public static function Pack (&$message){
 		$flag = "\x0E";
 		$buf = gzcompress($message ,9);
 		$sz = strlen($buf);
@@ -64,7 +60,8 @@ class Tinfoil {
 		$buffer .= pack('P', $sz);
 		$buffer .= $buf;
 
-		return $buffer;
+		$message = $buffer;
+		return (strlen($buf)>0);
 	}
 
 	public static function Enc(&$rawdata){
@@ -77,7 +74,7 @@ class Tinfoil {
 
 		$pubKey = '';
 		if (!self::PubKeyL($pubKey)){
-			$rawdata = self::Pack($rawdata);
+			self::Pack($rawdata);
 			return false;
 		}
 		
