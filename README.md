@@ -1,6 +1,8 @@
 # Tinfoil DRM port to PHP
 
-* How To use
+# How To use
+* Client mode
+
 ```
  php encrypt.php -i link.json -o jenc.tfl -t zlib -k public.key
 ```
@@ -9,6 +11,28 @@
 -k public key file to use for encryption
 -i input file mandatory
 -o output file mandatory
+```
+
+* Web server include
+* * Use include Asymmetric.php or add the class Tinfoil to your program
+```php
+include 'Asymmetric.php';
+
+$data = file_get_contents('Link.json');
+$data2 = $data;
+
+//Just Compress zlib
+Tinfoil::Pack($data);
+file_put_contents ("emp.tfl",$data2);
+
+//Get Lib and public Key to encrypt
+Tinfoil::init();
+//Encypt
+Tinfoil::Enc($data2);
+file_put_contents ("enc.tfl",$data);
+
+
+
 ```
 
 ## build lib by yor own
